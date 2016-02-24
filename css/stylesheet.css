@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+.intro, .quiz, .final {
+    text-align: center;
+}
+
+
+

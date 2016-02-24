@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
     <meta charset="UTF-8">
     <title>Fragile X Quiz</title>
 </head>
 <body>
+<!--intro screen - title, start button, logo?   -->
+    <section class="intro">
+        <h1 class="intro__title">Take the Fragile X Quiz</h1>
+        <button class="intro__start">Start!</button>
+    </section>
     
+<!--question section    -->
+    <section class="quiz">
+
+<!--correct/incorrect text-->
+        <div class="result">
+            <h3 class="result__type">correct/incorrect</h3>
+            <p class="result__text">
+                example text
+            </p>
+        </div>      
+<!-- display the question number x/10 and question text       -->
+       <div class="quiz__question">
+            <p class="quiz__question-text">
+                # <span class="quiz__question-number">x</span>/10 example text
+            </p>
+        </div>
+
+<!-- ol of li's for answers. selected = blue  -->
+        <div class="quiz__answers">
+            <ol class="quiz__answers-list">
+                <li class="quiz__answers-item">choice</li>
+                <li class="quiz__answers-item">choice</li>
+                <li class="quiz__answers-item">choice </li>
+                <li class="quiz__answers-item">choice</li>
+            </ol>
+        </div>
+        <div class="confirm">
+            <button class="confirm__button">Check your answer</button>
+        </div>
+    </section>
+    
+<!--final screen tally score, more information    -->
+    <section class="final">
+        <div class="final__tally">
+            <h3 class="final__tally-text">You got <span class="final__tally-count">x/10</span> correct</h3>
+        </div>
+        <div class="final__fxorg">
+            <h3 class="final__fxorg-text">To find out more, visit the National <a href="https://fragilex.org" target="_blank">Fragile X Foundation website</a>.</h3>
+        </div>
+        <button class="restart">Play again?</button>
+    </section>
+
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
