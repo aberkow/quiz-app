@@ -77,7 +77,7 @@ $(document).ready(function() {
     }
     
     $('.quiz__answers-item').click(function() {
-
+        $('.quiz__answers-item').addClass('selected');
     });
      
     /*function area*/
