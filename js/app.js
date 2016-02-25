@@ -5,6 +5,23 @@ To do -
 
 */
 
+function Question(questionArr, answerArray, correctAnswer, correctText) {
+    this.question = questionArr[0];
+    this.answer = answerArray;
+    this.correctIndex = answerArray[correctAnswer];
+    this.correctText = correctText;
+}
+
+var questionOne = new Question(questionArr[0], ["A genetic disorder", "A behavioral disorder", "A physical disability", "A mental disorder"], 0, "Fragile X Syndrome is a genetic disorder that...");
+
+var questionArr = ["What is Fragile X Syndrome?", "What are the approximate odds of being a carrier for Fragile X Syndrome?", "What are the approximate odds of having full mutation Fragile X Syndrome?", "Fragile X Syndrome is the most common known cause of __________", "How are people commonly diagnosed with FXS?"];
+
+
+//Qustion.prototype.askQuestion = function(){
+//        
+//    }
+
+
 var questionsArr = [
     {
         questionText: "What is Fragile X Syndrome?",
@@ -76,8 +93,13 @@ $(document).ready(function() {
       $('<div class="quiz__answers-item"/>').text(questionsArr[0].answerArray[i]).appendTo('.quiz__answers');
     }
     
-    $('.quiz__answers-item').click(function() {
-        $('.quiz__answers-item').addClass('selected');
+    $('.quiz__answers-item').click(function(evt) {
+        $(evt.target).addClass('selected');
+    });
+    
+    $('.confirm__button').click(function() {
+        var currentQuestion = 1;
+        
     });
      
     /*function area*/
