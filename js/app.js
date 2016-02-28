@@ -31,9 +31,8 @@ var quiz = [
 
 function questionCounter() {
   //either increment the counter or hide the quiz and show last screen/reset the counter.
-  if (quizIndexCounter < quiz.length) {
-      //return quizIndexCounter;  
-      quizIndexCounter++;
+  if (quizIndexCounter <= quiz.length - 1) { 
+    quizIndexCounter++;
     } else {
       $('.quiz').hide();
       $('.final').show();
@@ -64,8 +63,9 @@ $(document).ready(function() {
     $('.intro__start').click(function() {
         $('.quiz').show();
         $('.intro').hide();
-        displayQuestion(quiz[quizIndexCounter]);
-        questionCounter();
+      
+      displayQuestion(quiz[quizIndexCounter]);
+      questionCounter();  
     });
   /*cycle back to the first question*/  
   $('.restart').click(function() {
@@ -74,6 +74,8 @@ $(document).ready(function() {
   }) 
   
   $('.confirm__button').click(function() {
+    debugger;
+    
     displayQuestion(quiz[quizIndexCounter]);
     questionCounter();
   })
