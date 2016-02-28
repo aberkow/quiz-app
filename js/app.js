@@ -29,9 +29,19 @@ var quiz = [
     questionFive
 ]
 
+function questionCounter() {
+  //either increment the counter or hide the quiz and show last screen/reset the counter.
+  if (quizIndexCounter < quiz.length) {
+      //return quizIndexCounter;  
+      quizIndexCounter++;
+    } else {
+      $('.quiz').hide();
+      $('.final').show();
+      quizIndexCounter = 0;
+    }
+}
+
 function displayQuestion(question) {
-    //either increment the counter or hide the quiz and show last screen/reset the counter.
-    
     //clear the choices from the previous question.
     //set the text of the next question
     //set the answers each in its own <div>
@@ -41,15 +51,6 @@ function displayQuestion(question) {
       for (var i = 0; i < quiz[quizIndexCounter].answerArr.length; i++) { 
       $('<div class="quiz__answers-item"/>').text(question.answerArr[i]).appendTo('.quiz__answers');
     }
-    
-  if (quizIndexCounter < quiz.length) {
-      quizIndexCounter++;
-    } else {
-      $('.quiz').hide();
-      $('.final').show();
-      quizIndexCounter = 0;
-    }
-  
 }
 
 $(document).ready(function() {
@@ -64,6 +65,7 @@ $(document).ready(function() {
         $('.quiz').show();
         $('.intro').hide();
         displayQuestion(quiz[quizIndexCounter]);
+        questionCounter();
     });
   /*cycle back to the first question*/  
   $('.restart').click(function() {
@@ -73,6 +75,7 @@ $(document).ready(function() {
   
   $('.confirm__button').click(function() {
     displayQuestion(quiz[quizIndexCounter]);
+    questionCounter();
   })
     
     $('.quiz__answers-item').click(function(evt) {
