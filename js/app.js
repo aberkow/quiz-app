@@ -31,26 +31,26 @@ var quiz = [
 
 function questionCounter() {
   //either increment the counter or hide the quiz and show last screen/reset the counter.
-  if (quizIndexCounter <= quiz.length - 1) { 
+  if (quizIndexCounter < quiz.length - 1) { 
     quizIndexCounter++;
-    } else {
-      $('.quiz').hide();
-      $('.final').show();
-      quizIndexCounter = 0;
-    }
+    } 
+  else {
+    $('.quiz').hide();
+    $('.final').show();
+    quizIndexCounter = 0;
+  }
 }
-
-function displayQuestion(question) {
-    //clear the choices from the previous question.
+  //clear the choices from the previous question.
     //set the text of the next question
     //set the answers each in its own <div>
-    $('.quiz__answers').empty();
-    $('.quiz__question-text').text(quiz[quizIndexCounter].question);
-    //$('.quiz__question-text').text(question.question);
+function displayQuestion(question) {
+      $('.quiz__answers').empty();
+      $('.quiz__question-text').text(quiz[quizIndexCounter].question);
+      //$('.quiz__question-text').text(question.question);
       for (var i = 0; i < quiz[quizIndexCounter].answerArr.length; i++) { 
       $('<div class="quiz__answers-item"/>').text(question.answerArr[i]).appendTo('.quiz__answers');
-    }
-}
+      }
+  }
 
 $(document).ready(function() {
     /*just show the intro screen*/
@@ -71,24 +71,19 @@ $(document).ready(function() {
   $('.restart').click(function() {
     $('.final').hide();
     $('.intro').show();
-  }) 
+  }); 
   
   $('.confirm__button').click(function() {
-    debugger;
-    
     displayQuestion(quiz[quizIndexCounter]);
     questionCounter();
-  })
+  });
     
-    $('.quiz__answers-item').click(function(evt) {
-        $(evt.target).addClass('selected');
-        //needs to be a ternary operator?
-        //if (evt.target).
-    });
+  $('.quiz__answers-item').click(function(evt) {
+    $(evt.target).addClass('selected');
+    //needs to be a ternary operator?
+    //if (evt.target).
+  });
  
-    /*function area*/
-    
-
-    
+    /*function area*/    
 });
 
