@@ -77,11 +77,11 @@ $(document).ready(function() {
     displayQuestion(quiz[quizIndexCounter]);
     questionCounter();
   });
-    
-  $('.quiz__answers-item').click(function(evt) {
-    $(evt.target).addClass('selected');
-    //needs to be a ternary operator?
-    //if (evt.target).
+
+  $('.quiz__answers-item').click(function() {
+    // .click() doesn't seem to be working???
+    //tried .onclick, .click(function(evt)) - $(evt.target), and $(this)...
+    $(this).toggleClass('selected');
   });
  
     /*function area*/    
