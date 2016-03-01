@@ -41,7 +41,7 @@ $(document).ready(function() {
       questionCounter();
       displayQuestion();
       manageAnswers();
-      compareAnswers();
+      //compareAnswers();
     });
   
   /*cycle back to the first question*/  
@@ -54,8 +54,10 @@ $(document).ready(function() {
     //ternary operator: check text of button and toggle
     $(this).text() === 'Check your answer' ? $(this).text('Continue') : $(this).text('Check your answer');
     
+    //only works on the second click???
     if ($('.quiz__answers-item').hasClass('selected') == true) {
-     $(this).on('click', function() {
+     $('.confirm__button').on('click', function() {
+       debugger;
        compareAnswers();
      }); 
     } else {
@@ -79,17 +81,19 @@ $(document).ready(function() {
       currentQuizState.answers = quiz[indexCounter].answerArr;
       currentQuizState.correctChoice = quiz[indexCounter].correctAnswer;
       indexCounter++; 
-    }
+    } //add an else statement here to cycle back to the end.
   }
-  //}
+  
     //clear the choices from the previous question.
     //set the text of the next question
     //set the answers each in its own <div>
   function displayQuestion() {
+    //set the text of the question.
     $('.quiz__question-text').text(currentQuizState.question);
    } 
   
   function manageAnswers() {
+    //set the text of the possible answer choices
     $('.quiz__answers').empty;
     for (var i = 0; i < currentQuizState.answers.length; i++) {
       $('<div class="quiz__answers-item"/>')
@@ -103,15 +107,18 @@ $(document).ready(function() {
     }
   }
   
-  function compareAnswers() {
-    currentQuizState.userChoice = null;
-    if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+  
+});
+
+function compareAnswers() {
+    //compare the correct answer to the user's choice.
+    //debugger;
+    if (currentQuizState.userChoice.toString() == currentQuizState.correctChoice.toString()) {
       alert('Yay');
     }else{
       alert('Oops');
     }
   }
-});
 
 
 
