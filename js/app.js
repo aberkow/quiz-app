@@ -1,9 +1,11 @@
 /*Constructor function to hold all info for each question/answer/info*/
 
-var quizIndexCounter = 0;
+var indexCounter = 0;
 
+//needs: current question, user choice, correct answer, # of correct answers.
 var currentQuizState = {};
 
+//an array to hold all the questions
 var quiz = [
   new Question("What is Fragile X Syndrome?", ["A genetic disorder.", "A behavioral disorder.", "A physical disability.", "A mental disorder"], 0, "Fragile X Syndrome is a genetic disorder that..."),
   
@@ -16,6 +18,7 @@ var quiz = [
   new Question("How are people commonly diagnosed with FXS?", ["Physical exam", "Blood test", "Psychological evaluation", "Family history"], 1, "Both carriers and people with FXS are diagnosed through a genetic test usually from a blood sample.")
 ];
 
+//constructor function to make questions/answers
 function Question(question, answerArr, correctAnswer, infoText) {
     this.question = question;
     this.answerArr = answerArr;
@@ -32,15 +35,15 @@ $(document).ready(function() {
  
     /*start the game and get the first question/answer set ready*/
     $('.intro__start').click(function() {
-      startQuiz();  
+      //startQuiz();  
       $('.quiz').show();
-      $('.intro').hide();
-      
-      displayQuestion(quiz[quizIndexCounter]);
-      //createAnswerChoices(quiz[quizIndexCounter]);
-      questionCounter(); 
-      
+      $('.intro').hide();   
+      questionCounter();
+      displayQuestion();
+      manageAnswers();
+      compareAnswers();
     });
+  
   /*cycle back to the first question*/  
   $('.restart').click(function() {
     $('.final').hide();
@@ -48,57 +51,106 @@ $(document).ready(function() {
   }); 
   
   $('.confirm__button').click(function() {
-    var currentQuestion = quiz[quizIndexCounter];
-    currentQuestion.userAnswer
-    displayQuestion(currentQuestion);
-    questionCounter();
+    //ternary operator: check text of button and toggle
+    $(this).text() === 'Check your answer' ? $(this).text('Continue') : $(this).text('Check your answer');
+    
+    if ($('.quiz__answers-item').hasClass('selected') == true) {
+     $(this).on('click', function() {
+       compareAnswers();
+     }); 
+    } else {
+      questionCounter();
+    }
   });
 
     /*function area*/  
   function startQuiz() {
-    currentQuizState.question = null;
-    currentQuizState.userChoice = null;
-    currentQuizState.answers = null;
-    currentQuizState.correctChoice = null;
-    currentQuizState.numberCorrect = 0
+//    currentQuizState.question = null;
+//    currentQuizState.userChoice = null;
+//    //currentQuizState.answers = null;
+//    currentQuizState.correctChoice = quiz[quizIndexCounter].correctAnswer;
+//    currentQuizState.numberCorrect = 0
   } 
   
   function questionCounter() {
     //either increment the counter or hide the quiz and show last screen/reset the counter.
-    if (quizIndexCounter < quiz.length - 1) { 
-      quizIndexCounter++;
-      } else {
-      $('.quiz').hide();
-      $('.final').show();
-      quizIndexCounter = 0;
+    if (indexCounter < quiz.length - 1) {
+      currentQuizState.question = quiz[indexCounter].question;
+      currentQuizState.answers = quiz[indexCounter].answerArr;
+      currentQuizState.correctChoice = quiz[indexCounter].correctAnswer;
+      indexCounter++; 
     }
   }
+  //}
     //clear the choices from the previous question.
     //set the text of the next question
     //set the answers each in its own <div>
-  function displayQuestion(question) {
-    $('.quiz__answers').empty();
-    $('.quiz__question-text').text(quiz[quizIndexCounter].question);
-    //$('.quiz__question-text').text(question.question);
-    for (var i = 0; i < quiz[quizIndexCounter].answerArr.length; i++) { 
+  function displayQuestion() {
+    $('.quiz__question-text').text(currentQuizState.question);
+   } 
+  
+  function manageAnswers() {
+    $('.quiz__answers').empty;
+    for (var i = 0; i < currentQuizState.answers.length; i++) {
       $('<div class="quiz__answers-item"/>')
-        .text(question.answerArr[i])
-        .appendTo('.quiz__answers')
+        .text(currentQuizState.answers[i])
+        .appendTo($('.quiz__answers'))
         .on('click', function(evt) {
           $('.quiz__answers-item').removeClass('selected');
           $(this).addClass('selected');
-          quiz[quizIndexCounter].userAnswer = question.answerArr[i];
+          currentQuizState.userChoice = $(this).text();
       });
-      //debugger;
-     }  
-  }
-
-  function createAnswerChoices(question) {
-    if (answerChoiceItem < answerChoices.length - 1) {
-      answerChoices.push($('.quiz__answers-item').text(question.answerArr[i]));
-      answerChoiceItem++;
     }
-  } 
-
+  }
+  
+  function compareAnswers() {
+    currentQuizState.userChoice = null;
+    if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+      alert('Yay');
+    }else{
+      alert('Oops');
+    }
+  }
 });
+
+
+
+
+
+//      displayQuestion(currentQuizState.question);
+//      //createAnswerChoices(quiz[quizIndexCounter]);
+//      questionCounter(); 
+
+//var currentQuestion = quiz[quizIndexCounter];
+//    currentQuestion.userAnswer
+//    displayQuestion(currentQuestion);
+//    questionCounter();
+
+//    if (quizIndexCounter < quiz.length - 1) { 
+//      quizIndexCounter++;
+//      currentQuizState.question = quizIndexCounter;
+//      } else {
+//      $('.quiz').hide();
+//      $('.final').show();
+//      quizIndexCounter = 0;
+
+ //$('.quiz__answers').empty();
+//    $('.quiz__question-text').text(quiz[quizIndexCounter].question);
+//    //$('.quiz__question-text').text(question.question);
+//    for (var i = 0; i < quiz[quizIndexCounter].answerArr.length; i++) { 
+//      $('<div class="quiz__answers-item"/>').text(question.answerArr[i])
+//        .appendTo('.quiz__answers')
+//        .on('click', function(evt) {
+//          $('.quiz__answers-item').removeClass('selected');
+//          $(this).addClass('selected');
+//          quiz[quizIndexCounter].userAnswer = question.answerArr[i];
+//      });
+
+//  function createAnswerChoices(question) {
+//    if (answerChoiceItem < answerChoices.length - 1) {
+//      answerChoices.push($('.quiz__answers-item').text(question.answerArr[i]));
+//      answerChoiceItem++;
+//    }
+//  } 
+
 
