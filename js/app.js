@@ -51,10 +51,22 @@ $(document).ready(function() {
   }); 
   
   $('.confirm__button').click(function() {
+    //if the button says 'Check your answer'...
     if ($(this).text() == 'Check your answer') {
+      //compare the answers, set the info text, switch the button text
+      
       compareAnswers();
+      $('.result__text').text(currentQuizState.infoText);
       $(this).text('Continue');
+    
     } else {
+      //clear the info text, go to the next question, and reset the button text.
+      
+      $('.result__text').text('');
+      questionCounter();
+      displayQuestion();
+      manageAnswers();
+  
       $(this).text('Check your answer');
     }
   });
@@ -73,11 +85,11 @@ $(document).ready(function() {
     if (indexCounter < quiz.length - 1) {
       currentQuizState.question = quiz[indexCounter].question;
       currentQuizState.answers = quiz[indexCounter].answerArr;
+      currentQuizState.infoText = quiz[indexCounter].infoText;
       currentQuizState.correctChoice = quiz[indexCounter].correctAnswer.toString();
       indexCounter++; 
     } //add an else statement here to cycle back to the end.
   }
-  
     
   function displayQuestion() {
     //set the text of the question.
@@ -86,7 +98,7 @@ $(document).ready(function() {
   
   function manageAnswers() {
     //clear any previous answer sets and set next answer choices
-    $('.quiz__answers').empty;
+    $('.quiz__answers').empty();
     for (var i = 0; i < currentQuizState.answers.length; i++) {
       $('<div class="quiz__answers-item"/>')
         .text(currentQuizState.answers[i])
@@ -97,20 +109,20 @@ $(document).ready(function() {
           currentQuizState.userChoice = $(this).text();
       });
     }
-  }
-  
-  
+  }  
 });
 
 function compareAnswers() {
-    //compare the correct answer to the user's choice.
-    //debugger;
-    if (currentQuizState.userChoice == currentQuizState.correctChoice) {
-      alert('Yay');
-    }else{
-      alert('Oops');
-    }
+  
+  //compare the correct answer to the user's choice.
+  if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+    $('.result__type').text('Correct!');
+    console.log('Yay');
+  } else {
+    $('.result__type').text('Incorrect');
+    console.log('Oops');
   }
+}
 
 
 
