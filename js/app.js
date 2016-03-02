@@ -2,7 +2,7 @@
 
 var indexCounter = 0;
 
-//needs: current question, user choice, correct answer, # of correct answers.
+//store the current state of the quiz as it goes along.
 var currentQuizState = {
   numberCorrect: 0
 };
@@ -57,7 +57,6 @@ $(document).ready(function() {
     //if the button says 'Check your answer'...
     if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
-      
       compareAnswers();
       $('.result__text').text(currentQuizState.infoText);
       $(this).text('Continue');
@@ -118,7 +117,8 @@ $(document).ready(function() {
           currentQuizState.userChoice = $(this).text();
       });
     }
-  }  
+  }
+  
 });
 
 function compareAnswers() {

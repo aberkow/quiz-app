@@ -1,5 +1,16 @@
+/*
+fx-green: #549351;
+fx-pink: #B73167;
+fx-blue: #6790CA;
+fx-orange: #D9792C;
+*/
+
 * {
     box-sizing: border-box;
+}
+
+body {
+  background-color: #DAFFD2;
 }
 
 .intro, .quiz, .final {
@@ -7,7 +18,7 @@
 }
 
 .quiz__answers-item {
-    color: blue;
+    color: #26354A;
 }
 
 .quiz__answers-item:hover {
