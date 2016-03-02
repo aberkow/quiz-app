@@ -55,22 +55,23 @@ $(document).ready(function() {
   
   $('.confirm__button').click(function() {
     //if the button says 'Check your answer'...
-    if ($(this).text() == 'Check your answer') {
+      if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
-      compareAnswers();
-      $('.result__text').text(currentQuizState.infoText);
-      $(this).text('Continue');
+        compareAnswers();
+        $('.result__text').text(currentQuizState.infoText);
+        $(this).text('Continue');
     
-    } else {
+      } else {
       //clear the info text, go to the next question, and reset the button text.
       
-      $('.result__text, .result__type').text('');
-      questionCounter();
-      displayQuestion();
-      manageAnswers();
-  
-      $(this).text('Check your answer');
-    }
+        $('.result__text, .result__type').text('');
+        questionCounter();
+        displayQuestion();
+        manageAnswers();
+
+        $(this).text('Check your answer');
+      }
+    
   });
 
     /*function area*/  
@@ -121,9 +122,13 @@ $(document).ready(function() {
   
 });
 
+//find a way to make userChoice undefined w/o breaking things....
 function compareAnswers() {
   //compare the correct answer to the user's choice.
-  if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+  
+  if (currentQuizState.userChoice == undefined) {
+    alert('Please choose an answer');
+  } else if (currentQuizState.userChoice == currentQuizState.correctChoice) {
     $('.result__type').text('Correct!');
     currentQuizState.numberCorrect++;
     console.log('Yay');
@@ -131,6 +136,8 @@ function compareAnswers() {
     $('.result__type').text('Incorrect');
     console.log('Oops');
   }
+  //reset the value of userChoice so that you can't just click through w/o selecting answers
+  //currentQuizState.userChoice = undefined;
 }
 
 function howManyCorrect() {

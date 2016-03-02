@@ -17,16 +17,28 @@ body {
     text-align: center;
 }
 
+.quiz__answers > .quiz__answers-item {
+  margin: 1rem auto;
+  max-width: 20rem;
+  cursor: pointer;
+}
+
+.quiz__answers > .quiz__answers-item:hover {
+  background-color: #6790CA;
+}
+
 .quiz__answers-item {
-    color: #26354A;
+    color: #1A2433;
+    font-size: 1.5rem;
 }
 
 .quiz__answers-item:hover {
-    color:red;
+    //color: #6790CA;
 }
 
 .selected {
-    color: white;
-    background-color: blue;
+    background-color: #D9792C;
 }
+
+
 
