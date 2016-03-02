@@ -3,7 +3,9 @@
 var indexCounter = 0;
 
 //needs: current question, user choice, correct answer, # of correct answers.
-var currentQuizState = {};
+var currentQuizState = {
+  numberCorrect: 0
+};
 
 //an array to hold all the questions
 var quiz = [
@@ -48,6 +50,7 @@ $(document).ready(function() {
   $('.restart').click(function() {
     $('.final').hide();
     $('.intro').show();
+    startQuiz();
   }); 
   
   $('.confirm__button').click(function() {
@@ -62,7 +65,7 @@ $(document).ready(function() {
     } else {
       //clear the info text, go to the next question, and reset the button text.
       
-      $('.result__text').text('');
+      $('.result__text, .result__type').text('');
       questionCounter();
       displayQuestion();
       manageAnswers();
@@ -73,11 +76,12 @@ $(document).ready(function() {
 
     /*function area*/  
   function startQuiz() {
-//    currentQuizState.question = null;
+    indexCounter = 0;
+    currentQuizState.numberCorrect = 0;
+    //    currentQuizState.question = null;
 //    currentQuizState.userChoice = null;
 //    //currentQuizState.answers = null;
 //    currentQuizState.correctChoice = quiz[quizIndexCounter].correctAnswer;
-//    currentQuizState.numberCorrect = 0
   } 
   
   function questionCounter() {
@@ -88,7 +92,12 @@ $(document).ready(function() {
       currentQuizState.infoText = quiz[indexCounter].infoText;
       currentQuizState.correctChoice = quiz[indexCounter].correctAnswer.toString();
       indexCounter++; 
-    } //add an else statement here to cycle back to the end.
+    } else {
+      //show the final screen and give feedback
+      $('.quiz').hide();
+      $('.final').show();
+      howManyCorrect();
+    }
   }
     
   function displayQuestion() {
@@ -113,10 +122,10 @@ $(document).ready(function() {
 });
 
 function compareAnswers() {
-  
   //compare the correct answer to the user's choice.
   if (currentQuizState.userChoice == currentQuizState.correctChoice) {
     $('.result__type').text('Correct!');
+    currentQuizState.numberCorrect++;
     console.log('Yay');
   } else {
     $('.result__type').text('Incorrect');
@@ -124,44 +133,19 @@ function compareAnswers() {
   }
 }
 
-
-
-
-
-//      displayQuestion(currentQuizState.question);
-//      //createAnswerChoices(quiz[quizIndexCounter]);
-//      questionCounter(); 
-
-//var currentQuestion = quiz[quizIndexCounter];
-//    currentQuestion.userAnswer
-//    displayQuestion(currentQuestion);
-//    questionCounter();
-
-//    if (quizIndexCounter < quiz.length - 1) { 
-//      quizIndexCounter++;
-//      currentQuizState.question = quizIndexCounter;
-//      } else {
-//      $('.quiz').hide();
-//      $('.final').show();
-//      quizIndexCounter = 0;
-
- //$('.quiz__answers').empty();
-//    $('.quiz__question-text').text(quiz[quizIndexCounter].question);
-//    //$('.quiz__question-text').text(question.question);
-//    for (var i = 0; i < quiz[quizIndexCounter].answerArr.length; i++) { 
-//      $('<div class="quiz__answers-item"/>').text(question.answerArr[i])
-//        .appendTo('.quiz__answers')
-//        .on('click', function(evt) {
-//          $('.quiz__answers-item').removeClass('selected');
-//          $(this).addClass('selected');
-//          quiz[quizIndexCounter].userAnswer = question.answerArr[i];
-//      });
-
-//  function createAnswerChoices(question) {
-//    if (answerChoiceItem < answerChoices.length - 1) {
-//      answerChoices.push($('.quiz__answers-item').text(question.answerArr[i]));
-//      answerChoiceItem++;
-//    }
-//  } 
-
-
+function howManyCorrect() {
+  //Give different feedback based on performance.
+  var achievment;
+  if (currentQuizState.numberCorrect == quiz.length) {
+    achievment = 'Amazing!';
+  } else if (currentQuizState.numberCorrect == quiz.length - 1) {
+    achievment = 'Good job!';
+  } else if (currentQuizState.numberCorrect == quiz.length - 2) {
+    achievment = 'Not bad!';
+  } else {
+    achievment = 'Better luck next time!'
+  }
+  //set the final text for the quiz. # correct.
+  $('.final__tally-text').text(achievment + ' You got ' + currentQuizState.numberCorrect + ' of ' + quiz.length + ' correct.');  
+}
+  
