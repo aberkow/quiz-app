@@ -54,16 +54,20 @@ $(document).ready(function() {
   }); 
   
   $('.confirm__button').click(function() {
-    //if the button says 'Check your answer'...
-      if ($(this).text() == 'Check your answer') {
+      if (currentQuizState.userChoice == undefined) {
+        alert('Please choose an answer.');
+      }
+    
+    //else if(?) userChoice != undefined && 'Check your answer'...
+      else if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
         compareAnswers();
-        $('.result__text').text(currentQuizState.infoText);
+//        $('.result__text').text(currentQuizState.infoText);
         $(this).text('Continue');
     
       } else {
       //clear the info text, go to the next question, and reset the button text.
-      
+        currentQuizState.userChoice = undefined;
         $('.result__text, .result__type').text('');
         questionCounter();
         displayQuestion();
@@ -96,7 +100,7 @@ $(document).ready(function() {
       //show the final screen and give feedback
       $('.quiz').hide();
       $('.final').show();
-      howManyCorrect();
+      finalFeedback();
     }
   }
     
@@ -126,9 +130,7 @@ $(document).ready(function() {
 function compareAnswers() {
   //compare the correct answer to the user's choice.
   
-  if (currentQuizState.userChoice == undefined) {
-    alert('Please choose an answer');
-  } else if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+  if (currentQuizState.userChoice == currentQuizState.correctChoice) {
     $('.result__type').text('Correct!');
     currentQuizState.numberCorrect++;
     console.log('Yay');
@@ -136,11 +138,12 @@ function compareAnswers() {
     $('.result__type').text('Incorrect');
     console.log('Oops');
   }
+  $('.result__text').text(currentQuizState.infoText);
   //reset the value of userChoice so that you can't just click through w/o selecting answers
   //currentQuizState.userChoice = undefined;
 }
 
-function howManyCorrect() {
+function finalFeedback() {
   //Give different feedback based on performance.
   var achievment;
   if (currentQuizState.numberCorrect == quiz.length) {
