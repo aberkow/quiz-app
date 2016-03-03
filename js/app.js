@@ -15,11 +15,11 @@ var quiz = [
   
   new Question("What are the approximate odds of being a carrier for FXS?", ["1 in 1000 for males and females", "1 in 600 for males and 1 in 1000 for females", "1 in 500 for males and 1 in 150 for females", "1 in 150 for males and 1 in 500 for females"], 2, "Because women have two X chromosomes they are more likely to be carriers than men."),
   
-  new Question("Pre-mutation carriers are at risk for other FX related issues including ______", ["Progressive loss of vision and hearing", "Parkinson's like symptoms and infertility", "Muscle loss and digestive problems", "Skin disorders"], 1, "Male pre-mutation carriers over 50 have a 40% risk of Fragile X-associated Tremor/Ataxia Syndrome (FXTAS) which causes symptoms similar to Parminson's Disease. Female pre-mutation carriers under 40 have a 20% risk of Fragile X-associated Primary Ovarian Insufficiency which causes infertility."),  
+  new Question("Pre-mutation carriers are at risk for FX related issues including ______", ["Progressive loss of vision and hearing", "Neuro-degenerative issues and infertility", "Muscle loss and digestive problems", "Skin disorders"], 1, "Males over 50 have a 40% risk of FX-associated Tremor/Ataxia Syndrome (FXTAS) which causes symptoms similar to Parminson's Disease. Females under 40 have a 20% risk infertility due to FX-associated Primary Ovarian Insufficiency (FXPOI)."),  
     
   new Question("What are the approximate odds of having full mutation FXS?", ["1 in 300 for males and 1 in 500 for females", "1 in 2000 for males and 1 in 1000 for females", "1 in 3000 for males and 1 in 1500 for females", "1 in 4000 for males and 1 in 6000 for females"], 3, "Fragile X syndrome is more common in males (1 in 4000 vs 1 in 6000) and can effect them more severly."),
   
-  new Question("FXS is the most common known cause of __________", ["Autism Spectrum Disorder", "Attention Deficit Disorder", "Inherited Intellectual Disability", "Dislexia"], 2, "In addition to cognitive delays, people with FXS are often diagnosed with other disorders as well."),
+  new Question("FXS is the most common known cause of __________", ["Autism Spectrum Disorder", "Attention Deficit Disorder", "Inherited Intellectual Disability", "Dislexia"], 2, "While approximately 30% of people with FXS also have Autism Spectrum Disorder, FXS is the leading known cause of inherited intellectual disability."),
   
   new Question("How are people commonly diagnosed with FXS?", ["Physical exam", "Blood test", "Psychological evaluation", "Family history"], 1, "Both carriers and people with FXS are diagnosed through a genetic test usually from a blood sample."),
     
@@ -43,13 +43,11 @@ $(document).ready(function() {
  
     /*start the game and get the first question/answer set ready*/
     $('.intro__start').click(function() {
-      //startQuiz();  
       $('.quiz').show();
       $('.intro').hide();   
       questionCounter();
       displayQuestion();
       manageAnswers();
-      //compareAnswers();
     });
   
   /*cycle back to the first question*/  
@@ -93,7 +91,7 @@ $(document).ready(function() {
   
   function questionCounter() {
     //either increment the counter or hide the quiz and show last screen/reset the counter.
-    if (indexCounter < quiz.length - 1) {
+    if (indexCounter < quiz.length) {
       currentQuizState.question = quiz[indexCounter].question;
       currentQuizState.answers = quiz[indexCounter].answerArr;
       currentQuizState.infoText = quiz[indexCounter].infoText;
@@ -138,10 +136,15 @@ function compareAnswers() {
     console.log('Yay');
   } else {
     $('.result__type').text('Incorrect');
+    //$('.quiz__answers-item').removeClass('selected'
     console.log('Oops');
   }
   $('.result__text').text(currentQuizState.infoText);
 }
+
+//function showCorrectChoice() {
+//  
+//}
 
 function finalFeedback() {
   //Give different feedback based on performance.

@@ -25,15 +25,18 @@ header {
 }
 
 .intro__title {
+  font-family: 'Open Sans', sans-serif;
   padding-top: 10rem;
 }
 
 .final__tally {
+  font-family: 'Open Sans', sans-serif;
   padding-top: 2rem;
 }
 
 .intro__start, .confirm__button {
   padding: 0.5rem 1.5rem;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   border: 1px solid #6790CA;
   border-radius: 4px;
@@ -44,6 +47,7 @@ header {
 
 .restart {
   padding: 0.5rem 1.5rem;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.5rem;
   border: 1px solid #6790CA;
   border-radius: 4px;
@@ -68,6 +72,7 @@ header {
 
 .quiz__question {
   margin-top: 3rem;
+  font-family: 'Open Sans', sans-serif;
   font-size: 2rem;
 }
 
@@ -84,8 +89,9 @@ header {
 }
 
 .quiz__answers-item {
-    color: #1A2433;
-    font-size: 1.5rem;
+  color: #1A2433;
+  font-family: 'Open Sans', sans-serif;  
+  font-size: 1.5rem;
 }
 
 .quiz__answers-item:hover {
@@ -98,12 +104,14 @@ header {
 
 .result__type {
   margin: 0;
+  font-family: 'Open Sans', sans-serif;
   font-size: 2rem;
 }
 
 .result__text {
   max-width: 40rem;
   margin: 1rem auto;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
 }
 
@@ -111,8 +119,41 @@ header {
     background-color: #D9792C;
 }
 
+/*
+find a way to set the correct and incorrect choice...
+#correct {
+  background-color: #549351;
+}
+
+#incorrect {
+  background-color: #B73167;
+}
+*/
+
+.final__fxorg {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .final__fxorg-link {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .quiz__question {
+    font-size: 1.3rem;
+  }
+  .quiz__answers > .quiz__answers-item {
+    max-width: 20rem;
+  }
+  .quiz__answers-item {
+    font-size: 1.2rem;
+  }
+  .result__type {
+    font-size: 1.5rem;
+  }
+  .result__text {
+    font-size: 0.9rem;
+  }
 }
 
 
