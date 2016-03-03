@@ -9,7 +9,7 @@ var currentQuizState = {
 
 //an array to hold all the questions
 var quiz = [
-  new Question("What is Fragile X Syndrome?", ["A genetic disorder.", "A behavioral disorder.", "A physical disability.", "A mental disorder"], 0, "Fragile X Syndrome is a genetic disorder that..."),
+  new Question("What is Fragile X Syndrome?", ["A genetic disorder.", "A behavioral disorder.", "A physical disability.", "A mental disorder"], 0, "Fragile X Syndrome is a genetic disorder that causes: intellectual, behavioral, social, emotional, physical, sensory, and speech and language delays and disabilities."),
   
   new Question("What are the approximate odds of being a carrier for Fragile X Syndrome?", ["1 in 1000 for males and females", "1 in 600 for males and 1 in 1000 for females", "1 in 500 for males and 1 in 150 for females", "1 in 150 for males and 1 in 500 for females"], 2, "The odds of being a carrier are higer for females because they have two X chromosomes."),
   

@@ -24,11 +24,15 @@ header {
     text-align: center;
 }
 
-.intro__title, .final__tally {
+.intro__title {
   padding-top: 10rem;
 }
 
-.intro__start, .confirm__button, .restart {
+.final__tally {
+  padding-top: 2rem;
+}
+
+.intro__start, .confirm__button {
   padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
   border: 1px solid #6790CA;
@@ -36,6 +40,16 @@ header {
   background-color: #6790CA;
   display: block;
   margin: 0 auto;
+}
+
+.restart {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+  border: 1px solid #6790CA;
+  border-radius: 4px;
+  background-color: #6790CA;
+  display: block;
+  margin: 1rem auto;
 }
 
 .intro, .final; {
@@ -95,5 +109,8 @@ header {
     background-color: #D9792C;
 }
 
+.final__fxorg-link {
+  cursor: pointer;
+}
 
 
