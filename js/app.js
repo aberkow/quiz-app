@@ -57,14 +57,11 @@ $(document).ready(function() {
       if (currentQuizState.userChoice == undefined) {
         alert('Please choose an answer.');
       }
-    
-    //else if(?) userChoice != undefined && 'Check your answer'...
+    //else if(?) userChoice != undefined && 'Check your answer'...?
       else if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
         compareAnswers();
-//        $('.result__text').text(currentQuizState.infoText);
         $(this).text('Continue');
-    
       } else {
       //clear the info text, go to the next question, and reset the button text.
         currentQuizState.userChoice = undefined;
@@ -74,18 +71,18 @@ $(document).ready(function() {
         manageAnswers();
 
         $(this).text('Check your answer');
-      }
-    
+      }  
   });
 
     /*function area*/  
   function startQuiz() {
     indexCounter = 0;
     currentQuizState.numberCorrect = 0;
-    //    currentQuizState.question = null;
-//    currentQuizState.userChoice = null;
-//    //currentQuizState.answers = null;
-//    currentQuizState.correctChoice = quiz[quizIndexCounter].correctAnswer;
+    currentQuizState.question = null;
+    currentQuizState.userChoice = null;
+    currentQuizState.answers = null;
+    currentQuizState.correctChoice = null;
+    currentQuizState.infoText = null;
   } 
   
   function questionCounter() {
@@ -129,7 +126,6 @@ $(document).ready(function() {
 //find a way to make userChoice undefined w/o breaking things....
 function compareAnswers() {
   //compare the correct answer to the user's choice.
-  
   if (currentQuizState.userChoice == currentQuizState.correctChoice) {
     $('.result__type').text('Correct!');
     currentQuizState.numberCorrect++;
@@ -139,8 +135,6 @@ function compareAnswers() {
     console.log('Oops');
   }
   $('.result__text').text(currentQuizState.infoText);
-  //reset the value of userChoice so that you can't just click through w/o selecting answers
-  //currentQuizState.userChoice = undefined;
 }
 
 function finalFeedback() {

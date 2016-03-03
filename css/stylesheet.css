@@ -34,10 +34,18 @@ header {
   border: 1px solid #6790CA;
   border-radius: 4px;
   background-color: #6790CA;
+  display: block;
+  margin: 0 auto;
 }
 
 .intro, .final; {
   margin-top: 10rem;
+}
+
+.logo {
+  width: 250px;
+  display: inline-block;
+  margin-top: 1.5rem;
 }
 
 .quiz {
