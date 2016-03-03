@@ -24,8 +24,8 @@ header {
     text-align: center;
 }
 
-.intro__title {
-  //padding-top: 14rem;
+.intro__title, .final__tally {
+  padding-top: 10rem;
 }
 
 .intro__start, .confirm__button, .restart {
@@ -51,7 +51,7 @@ header {
 
 .quiz__answers > .quiz__answers-item {
   margin: 0 auto;
-  max-width: 20rem;
+  max-width: 31rem;
   padding: 1rem 0;
   cursor: pointer;
   border-radius: 4px;
