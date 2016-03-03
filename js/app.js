@@ -9,15 +9,21 @@ var currentQuizState = {
 
 //an array to hold all the questions
 var quiz = [
-  new Question("What is Fragile X Syndrome?", ["A genetic disorder.", "A behavioral disorder.", "A physical disability.", "A mental disorder"], 0, "Fragile X Syndrome is a genetic disorder that causes: intellectual, behavioral, social, emotional, physical, sensory, and speech and language delays and disabilities."),
+  new Question("What is Fragile X Syndrome?", ["A genetic disorder", "A behavioral disorder", "A physical disability", "A mental disorder"], 0, "Fragile X Syndrome (FXS) is a genetic disorder that causes: intellectual, behavioral, social, emotional, physical, sensory, and speech and language delays and disabilities."),
   
-  new Question("What are the approximate odds of being a carrier for Fragile X Syndrome?", ["1 in 1000 for males and females", "1 in 600 for males and 1 in 1000 for females", "1 in 500 for males and 1 in 150 for females", "1 in 150 for males and 1 in 500 for females"], 2, "The odds of being a carrier are higer for females because they have two X chromosomes."),
+  new Question("Who has the gene that causes FXS?", ["Only parents of people with FXS", "All of the immediate family members of someone with FXS", "Everyone in the world", "Only people with FXS"], 2, "FXS is caused by a mutation of the FMR1 gene which everyone has."),
   
-  new Question("What are the approximate odds of having full mutation Fragile X Syndrome?", ["1 in 300 for males and 1 in 500 for females", "1 in 2000 for males and 1 in 1000 for females", "1 in 3000 for males and 1 in 1500 for females", "1 in 4000 for males and 1 in 6000 for females"], 3, "Fragile X syndrome is more common in males and can effect them more strongly."),
+  new Question("What are the approximate odds of being a carrier for FXS?", ["1 in 1000 for males and females", "1 in 600 for males and 1 in 1000 for females", "1 in 500 for males and 1 in 150 for females", "1 in 150 for males and 1 in 500 for females"], 2, "Because women have two X chromosomes they are more likely to be carriers than men."),
   
-  new Question("Fragile X Syndrome is the most common known cause of __________", ["Autism Spectrum Disorder", "Attention Deficit Disorder", "Inherited Intellectual Disability", "Dislexia"], 2, "A person with an intellectual disability has more difficulty learning and functioning in day to day life compared with a typical person."),
+  new Question("Pre-mutation carriers are at risk for other FX related issues including ______", ["Progressive loss of vision and hearing", "Parkinson's like symptoms and infertility", "Muscle loss and digestive problems", "Skin disorders"], 1, "Male pre-mutation carriers over 50 have a 40% risk of Fragile X-associated Tremor/Ataxia Syndrome (FXTAS) which causes symptoms similar to Parminson's Disease. Female pre-mutation carriers under 40 have a 20% risk of Fragile X-associated Primary Ovarian Insufficiency which causes infertility."),  
+    
+  new Question("What are the approximate odds of having full mutation FXS?", ["1 in 300 for males and 1 in 500 for females", "1 in 2000 for males and 1 in 1000 for females", "1 in 3000 for males and 1 in 1500 for females", "1 in 4000 for males and 1 in 6000 for females"], 3, "Fragile X syndrome is more common in males (1 in 4000 vs 1 in 6000) and can effect them more severly."),
   
-  new Question("How are people commonly diagnosed with FXS?", ["Physical exam", "Blood test", "Psychological evaluation", "Family history"], 1, "Both carriers and people with FXS are diagnosed through a genetic test usually from a blood sample.")
+  new Question("FXS is the most common known cause of __________", ["Autism Spectrum Disorder", "Attention Deficit Disorder", "Inherited Intellectual Disability", "Dislexia"], 2, "In addition to cognitive delays, people with FXS are often diagnosed with other disorders as well."),
+  
+  new Question("How are people commonly diagnosed with FXS?", ["Physical exam", "Blood test", "Psychological evaluation", "Family history"], 1, "Both carriers and people with FXS are diagnosed through a genetic test usually from a blood sample."),
+    
+  new Question("What are some strengths of people with FXS?", ["Strong imitation skills", "Excellent visual memory", "Desire to please and help others", "All of the above"], 3, "Despite the challenges faced by people with FXS, these are only a few of the strengths they have.")
 ];
 
 //constructor function to make questions/answers
