@@ -57,7 +57,7 @@ $(document).ready(function() {
     startQuiz();
   }); 
   
-  $('.confirm__button').click(function() {
+  $('.confirm__button').on('click', function() {
       if (currentQuizState.userChoice == undefined) {
         alert('Please choose an answer.');
       }
@@ -123,14 +123,14 @@ $(document).ready(function() {
           currentQuizState.userChoice = $(this).text();
       });
     }
-  }
-  
+  } 
 });
 
 //find a way to make userChoice undefined w/o breaking things....
 function compareAnswers() {
   //compare the correct answer to the user's choice.
   if (currentQuizState.userChoice == currentQuizState.correctChoice) {
+//    $('.quiz__answers-item.selected').addClass($('correct').attr('id'));
     $('.result__type').text('Correct!');
     currentQuizState.numberCorrect++;
     console.log('Yay');
@@ -143,7 +143,7 @@ function compareAnswers() {
 }
 
 //function showCorrectChoice() {
-//  
+//  currentQuizStat
 //}
 
 function finalFeedback() {
