@@ -113,17 +113,34 @@ $(document).ready(function() {
   function manageAnswers() {
     //clear any previous answer sets and set next answer choices
     $('.quiz__answers').empty();
-    for (var i = 0; i < currentQuizState.answers.length; i++) {
-      $('<div class="quiz__answers-item"/>')
-        .text(currentQuizState.answers[i])
-        .appendTo($('.quiz__answers'))
-        .on('click', function(evt) {
-          $('.quiz__answers-item').removeClass('selected');
+    currentQuizState.answers.forEach(function() {
+      var newDiv = $('<div class="quiz__answers-item"/>');
+      newDiv.each(function() {
+        for (i = 0; i < currentQuizState.answers.length - 1; i++) {
+          newDiv.attr('id', i);
+        }
+      });
+      //     for (i = 0; i < currentQuizState.answers.length - 1; i++) {
+//       //newDiv.attr('id', i);
+//       newDiv.each
+//     } newDiv.text(currentQuizState.answers).appendTo($('.quiz__answers')).on('click', function(evt) {
+        $('.quiz__answers-item').removeClass('selected');
           $(this).addClass('selected');
           currentQuizState.userChoice = $(this).text();
-      });
+        });
     }
-  } 
+    
+//    for (var i = 0; i < currentQuizState.answers.length; i++) {
+//      $('<div class="quiz__answers-item"/>')
+//        .text(currentQuizState.answers[i])
+//        .appendTo($('.quiz__answers'))
+//        .on('click', function(evt) {
+//          $('.quiz__answers-item').removeClass('selected');
+//          $(this).addClass('selected');
+//          currentQuizState.userChoice = $(this).text();
+//      });
+//    }
+//  } 
 });
 
 //find a way to make userChoice undefined w/o breaking things....
