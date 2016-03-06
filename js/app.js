@@ -65,6 +65,7 @@ $(document).ready(function() {
       else if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
         compareAnswers();
+        revealAnswer();
         $(this).text('Continue');
       } else {
       //clear the info text, go to the next question, and reset the button text.
@@ -113,34 +114,18 @@ $(document).ready(function() {
   function manageAnswers() {
     //clear any previous answer sets and set next answer choices
     $('.quiz__answers').empty();
-    currentQuizState.answers.forEach(function() {
-      var newDiv = $('<div class="quiz__answers-item"/>');
-      newDiv.each(function() {
-        for (i = 0; i < currentQuizState.answers.length - 1; i++) {
-          newDiv.attr('id', i);
-        }
-      });
-      //     for (i = 0; i < currentQuizState.answers.length - 1; i++) {
-//       //newDiv.attr('id', i);
-//       newDiv.each
-//     } newDiv.text(currentQuizState.answers).appendTo($('.quiz__answers')).on('click', function(evt) {
-        $('.quiz__answers-item').removeClass('selected');
-          $(this).addClass('selected');
-          currentQuizState.userChoice = $(this).text();
-        });
-    }
     
-//    for (var i = 0; i < currentQuizState.answers.length; i++) {
-//      $('<div class="quiz__answers-item"/>')
-//        .text(currentQuizState.answers[i])
-//        .appendTo($('.quiz__answers'))
-//        .on('click', function(evt) {
-//          $('.quiz__answers-item').removeClass('selected');
-//          $(this).addClass('selected');
-//          currentQuizState.userChoice = $(this).text();
-//      });
-//    }
-//  } 
+    for (var i = 0; i < currentQuizState.answers.length; i++) {
+      $('<div class="quiz__answers-item"/>')
+        .text(currentQuizState.answers[i])
+        .appendTo($('.quiz__answers'))
+        .on('click', function(evt) {
+          //$('.quiz__answers-item').removeClass('selected');
+          $(this).attr('id', 'selected');
+          currentQuizState.userChoice = $(this).text();
+      });
+    }
+  } 
 });
 
 //find a way to make userChoice undefined w/o breaking things....
@@ -158,6 +143,13 @@ function compareAnswers() {
   }
   $('.result__text').text(currentQuizState.infoText);
 }
+//THIS IS CLOSER
+//function revealAnswer() {
+//  if ($('#selected').text == currentQuizState.correctChoice) {
+//    $('.quiz__answers-item').removeAttr('id', 'selected');
+//    $('.quiz__answers-item').attr('id', '#correct');
+//  }
+//}
 
 //function showCorrectChoice() {
 //  currentQuizStat

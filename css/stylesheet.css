@@ -115,7 +115,7 @@ header {
   font-size: 1rem;
 }
 
-.selected {
+#selected {
     background-color: #D9792C;
 }
 
