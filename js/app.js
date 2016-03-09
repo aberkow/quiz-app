@@ -15,7 +15,7 @@ var quiz = [
   
   new Question("What are the approximate odds of being a carrier for FXS?", ["1 in 1000 for males and females", "1 in 600 for males and 1 in 1000 for females", "1 in 500 for males and 1 in 150 for females", "1 in 150 for males and 1 in 500 for females"], 2, "Because women have two X chromosomes they are more likely to be carriers than men."),
   
-  new Question("Pre-mutation carriers are at risk for FX related issues including ______", ["Progressive loss of vision and hearing", "Neuro-degenerative issues and infertility", "Muscle loss and digestive problems", "Skin disorders"], 1, "Males over 50 have a 40% risk of FX-associated Tremor/Ataxia Syndrome (FXTAS) which causes symptoms similar to Parminson's Disease. Females under 40 have a 20% risk infertility due to FX-associated Primary Ovarian Insufficiency (FXPOI)."),  
+  new Question("Pre-mutation carriers are at risk for FX related issues including ______", ["Progressive loss of vision and hearing", "Neuro-degenerative issues and infertility", "Muscle loss and digestive problems", "Skin disorders"], 1, "Males over 50 have a 40% risk of FX-associated Tremor/Ataxia Syndrome (FXTAS) which causes symptoms similar to Parkinson's Disease. Females under 40 have a 20% risk infertility due to FX-associated Primary Ovarian Insufficiency (FXPOI)."),  
     
   new Question("What are the approximate odds of having full mutation FXS?", ["1 in 300 for males and 1 in 500 for females", "1 in 2000 for males and 1 in 1000 for females", "1 in 3000 for males and 1 in 1500 for females", "1 in 4000 for males and 1 in 6000 for females"], 3, "Fragile X syndrome is more common in males (1 in 4000 vs 1 in 6000) and can effect them more severly."),
   
