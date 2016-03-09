@@ -118,8 +118,8 @@ $(document).ready(function() {
         .text(currentQuizState.answers[i])
         .appendTo($('.quiz__answers'))
         .on('click', function(evt) {
-          $('.quiz__answers-item').removeClass('selected');
-          $(this).addClass('selected');
+          $('.quiz__answers-item').removeClass('quiz__answers-item--selected');
+          $(this).addClass('quiz__answers-item--selected');
           currentQuizState.userChoice = $(this).text();
       });
     }
@@ -132,10 +132,13 @@ function compareAnswers() {
   //compare the correct answer to the user's choice.
   if (currentQuizState.userChoice == currentQuizState.correctChoice) {
     $('.result__type').text('Correct!');
+    $('.quiz__answers-item--selected').addClass('quiz__answers-item--correct').removeClass('quiz__answers-item--selected');
     currentQuizState.numberCorrect++;
     console.log('Yay');
   } else {
     $('.result__type').text('Incorrect');
+    $('.quiz__answers-item--selected').addClass('quiz__answers-item--incorrect').removeClass('quiz__answers-item--selected');
+    $($('.quiz__answers-item')[currentQuizState.correctChoice]).addClass('quiz__answers-item--correct');
     //$('.quiz__answers-item').removeClass('selected'
     console.log('Oops');
   }

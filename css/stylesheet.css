@@ -115,20 +115,19 @@ header {
   font-size: 1rem;
 }
 
-.selected {
+.quiz__answers-item--selected {
     background-color: #D9792C;
 }
 
-/*
-find a way to set the correct and incorrect choice...
-#correct {
+/*find a way to set the correct and incorrect choice...*/
+
+.quiz__answers-item--correct {
   background-color: #549351;
 }
 
-#incorrect {
+.quiz__answers-item--incorrect {
   background-color: #B73167;
 }
-*/
 
 .final__fxorg {
   font-family: 'Open Sans', sans-serif;
