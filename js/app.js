@@ -59,9 +59,12 @@ $(document).ready(function() {
   
   $('.confirm__button').click(function() {
       if (currentQuizState.userChoice == undefined) {
-        alert('Please choose an answer.');
+        $('.confirm__button').addClass('confirm__button-warning').text('Please make a choice');
+      } else if ($('.confirm__button').hasClass('confirm__button-warning') && (currentQuizState.userChoice != undefined)) {
+        $('.confirm__button')
+          .removeClass('confirm__button-warning')
+          .text('Check your answer');
       }
-    //else if(?) userChoice != undefined && 'Check your answer'...?
       else if ($(this).text() == 'Check your answer') {
       //compare the answers, set the info text, switch the button text
         compareAnswers();
@@ -127,7 +130,6 @@ $(document).ready(function() {
   
 });
 
-//find a way to make userChoice undefined w/o breaking things....
 function compareAnswers() {
   //compare the correct answer to the user's choice.
   if (currentQuizState.userChoice == currentQuizState.correctChoice) {
@@ -143,10 +145,6 @@ function compareAnswers() {
   }
   $('.result__text').text(currentQuizState.infoText);
 }
-
-//function showCorrectChoice() {
-//  
-//}
 
 function finalFeedback() {
   //Give different feedback based on performance.

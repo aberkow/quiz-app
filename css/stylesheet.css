@@ -45,6 +45,17 @@ header {
   margin: 0 auto;
 }
 
+.confirm__button-warning{
+  padding: 0.5rem 1.5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  border: 1px solid #B73167;
+  border-radius: 4px;
+  background-color: #B73167;
+  display: block;
+  margin: 0 auto;
+}
+
 .final__btns {
   text-align: center;
 }
