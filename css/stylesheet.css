@@ -119,8 +119,6 @@ header {
     background-color: #D9792C;
 }
 
-/*find a way to set the correct and incorrect choice...*/
-
 .quiz__answers-item--correct {
   background-color: #549351;
 }
